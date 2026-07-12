@@ -7,8 +7,11 @@ import { useTranslations } from "next-intl";
 const EGG_PATH =
   "M100,6 C154,6 186,82 186,154 C186,218 148,254 100,254 C52,254 14,218 14,154 C14,82 46,6 100,6 Z";
 
+// Tapered so the jagged crack meets the egg's true left/right tips
+// (14,154) and (186,154) exactly - keeps the corners cutting cleanly
+// along the shell's silhouette instead of swinging outside it.
 const CRACK_LINE =
-  "M0,152 L16,144 L32,163 L50,138 L68,159 L86,145 L104,165 L122,141 L140,161 L158,143 L178,158 L200,152";
+  "M0,154 L14,154 L40,162 L60,140 L80,160 L100,144 L120,163 L140,140 L160,160 L186,154 L200,154";
 
 function Shard({
   crack,
