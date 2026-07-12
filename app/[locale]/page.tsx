@@ -163,6 +163,32 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="bg-brand-primary-dark">
+        <div className="mx-auto max-w-6xl px-6 py-20">
+          <Reveal>
+            <div className="text-center max-w-2xl mx-auto">
+              <h2 className="text-2xl md:text-3xl font-bold text-white">
+                {t("home.videoTitle")}
+              </h2>
+              <p className="mt-3 text-white/70">{t("home.videoSubtitle")}</p>
+            </div>
+          </Reveal>
+          <Reveal delay={100}>
+            <div className="mt-12 relative rounded-3xl overflow-hidden shadow-2xl max-w-xs mx-auto aspect-[9/16]">
+              <video
+                className="h-full w-full object-cover"
+                src="/videos/eggs-showcase.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       <section className="bg-brand-cream">
         <div className="mx-auto max-w-6xl px-6 py-20">
           <Reveal>
