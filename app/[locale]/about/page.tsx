@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+import Reveal from "@/components/Reveal";
 
 export default function AboutPage() {
   const t = useTranslations();
@@ -24,17 +25,17 @@ export default function AboutPage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-6 py-16 grid gap-10 md:grid-cols-2">
-        <div>
+        <Reveal>
           <h2 className="text-xl font-semibold text-brand-primary-dark">
             {t("about.storyTitle")}
           </h2>
           <p className="mt-3 text-foreground/70 leading-relaxed">
             {t("about.storyBody")}
           </p>
-        </div>
+        </Reveal>
 
-        <div className="grid gap-6">
-          <div className="rounded-2xl bg-brand-cream p-6">
+        <Reveal delay={120} className="grid gap-6">
+          <div className="rounded-2xl bg-brand-cream p-6 border-l-4 border-l-brand-accent rtl:border-l-0 rtl:border-r-4 rtl:border-r-brand-accent">
             <h3 className="font-semibold text-brand-primary-dark">
               {t("about.missionTitle")}
             </h3>
@@ -42,7 +43,7 @@ export default function AboutPage() {
               {t("about.missionBody")}
             </p>
           </div>
-          <div className="rounded-2xl bg-brand-cream p-6">
+          <div className="rounded-2xl bg-brand-cream p-6 border-l-4 border-l-brand-primary rtl:border-l-0 rtl:border-r-4 rtl:border-r-brand-primary">
             <h3 className="font-semibold text-brand-primary-dark">
               {t("about.visionTitle")}
             </h3>
@@ -50,25 +51,26 @@ export default function AboutPage() {
               {t("about.visionBody")}
             </p>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <section className="bg-brand-cream">
         <div className="mx-auto max-w-6xl px-6 py-16">
-          <h2 className="text-xl font-semibold text-center text-brand-primary-dark">
-            {t("about.valuesTitle")}
-          </h2>
+          <Reveal>
+            <h2 className="text-xl font-semibold text-center text-brand-primary-dark">
+              {t("about.valuesTitle")}
+            </h2>
+          </Reveal>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 md:grid-cols-4">
             {values.map((v, i) => (
-              <div
-                key={i}
-                className="rounded-2xl bg-white p-6 text-center border border-black/5"
-              >
-                <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-brand-primary text-white font-semibold">
-                  {i + 1}
+              <Reveal key={i} delay={i * 90}>
+                <div className="h-full rounded-2xl bg-white p-6 text-center border border-black/5 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                  <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-brand-primary text-white font-semibold">
+                    {i + 1}
+                  </div>
+                  <p className="mt-4 text-sm text-foreground/70">{v}</p>
                 </div>
-                <p className="mt-4 text-sm text-foreground/70">{v}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>

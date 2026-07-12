@@ -19,9 +19,25 @@ const notoKufiArabic = Noto_Kufi_Arabic({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://agroprime.qa"),
   title: "Agroprime | Farm-Fresh Eggs, Trusted Supply",
   description:
     "Agroprime is a Qatar-based egg producer and trading company, supplying fresh, quality-graded eggs to retail, wholesale, and export partners.",
+  openGraph: {
+    title: "Agroprime | Farm-Fresh Eggs, Trusted Supply",
+    description:
+      "Agroprime is a Qatar-based egg producer and trading company, supplying fresh, quality-graded eggs to retail, wholesale, and export partners.",
+    url: "https://agroprime.qa",
+    siteName: "Agroprime",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Agroprime | Farm-Fresh Eggs, Trusted Supply",
+    description:
+      "Agroprime is a Qatar-based egg producer and trading company, supplying fresh, quality-graded eggs to retail, wholesale, and export partners.",
+  },
 };
 
 export function generateStaticParams() {
