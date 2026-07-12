@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import ScrollCrackEgg from "@/components/ScrollCrackEgg";
@@ -53,7 +54,19 @@ export default function HomePage() {
   return (
     <div>
       <section className="relative overflow-hidden bg-brand-primary-dark text-white min-h-[70vh] flex items-center">
-        <div className="mx-auto max-w-6xl px-6 py-24 md:py-32 w-full text-center">
+        <Image
+          src="/hero-eggs.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-gradient-to-b from-brand-primary-dark/90 via-brand-primary-dark/80 to-brand-primary-dark/95"
+        />
+        <div className="relative z-10 mx-auto max-w-6xl px-6 py-24 md:py-32 w-full text-center">
           <p className="text-brand-accent font-semibold tracking-wide uppercase text-sm mb-4">
             {t("common.tagline")}
           </p>
