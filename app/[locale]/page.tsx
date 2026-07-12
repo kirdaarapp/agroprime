@@ -45,6 +45,12 @@ export default function HomePage() {
     { title: t("home.why3Title"), desc: t("home.why3Desc"), Icon: IconTruck },
   ];
 
+  const heroBadges = [
+    { label: t("home.badge1"), Icon: IconSnowflake },
+    { label: t("home.badge2"), Icon: IconScale },
+    { label: t("home.badge3"), Icon: IconTruck },
+  ];
+
   const steps = [
     { title: t("home.step1Title"), desc: t("home.step1Desc"), Icon: IconMessage },
     { title: t("home.step2Title"), desc: t("home.step2Desc"), Icon: IconCheckBadge },
@@ -53,42 +59,66 @@ export default function HomePage() {
 
   return (
     <div>
-      <section className="relative overflow-hidden bg-brand-primary-dark text-white min-h-[70vh] flex items-center">
-        <Image
-          src="/hero-eggs.jpg"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div
-          aria-hidden
-          className="absolute inset-0 bg-gradient-to-b from-brand-primary-dark/90 via-brand-primary-dark/80 to-brand-primary-dark/95"
-        />
-        <div className="relative z-10 mx-auto max-w-6xl px-6 py-24 md:py-32 w-full text-center">
-          <p className="text-brand-accent font-semibold tracking-wide uppercase text-sm mb-4">
-            {t("common.tagline")}
-          </p>
-          <h1 className="text-4xl md:text-5xl font-bold max-w-2xl mx-auto leading-tight">
-            {t("home.heroTitle")}
-          </h1>
-          <p className="mt-6 max-w-xl mx-auto text-white/80 text-lg">
-            {t("home.heroSubtitle")}
-          </p>
-          <div className="mt-10 flex flex-wrap gap-4 justify-center">
-            <Link
-              href="/products"
-              className="rounded-full bg-brand-accent px-6 py-3 text-sm font-semibold text-brand-primary-dark shadow-lg shadow-brand-accent/20 hover:brightness-95 hover:-translate-y-0.5 transition"
-            >
-              {t("common.viewProducts")}
-            </Link>
-            <Link
-              href="/contact"
-              className="rounded-full border border-white/30 px-6 py-3 text-sm font-semibold hover:bg-white/10 hover:-translate-y-0.5 transition"
-            >
-              {t("common.requestQuote")}
-            </Link>
+      <section className="bg-brand-cream overflow-hidden">
+        <div className="mx-auto max-w-6xl px-6 py-20 md:py-28 grid md:grid-cols-2 gap-14 items-center">
+          <div>
+            <p className="text-brand-accent font-semibold tracking-wide uppercase text-sm mb-4">
+              {t("common.tagline")}
+            </p>
+            <h1 className="text-4xl md:text-5xl font-bold leading-tight text-brand-primary-dark">
+              {t("home.heroTitle")}
+            </h1>
+            <p className="mt-6 text-foreground/70 text-lg max-w-xl">
+              {t("home.heroSubtitle")}
+            </p>
+            <div className="mt-9 flex flex-wrap gap-4">
+              <Link
+                href="/products"
+                className="rounded-full bg-brand-accent px-6 py-3 text-sm font-semibold text-brand-primary-dark shadow-lg shadow-brand-accent/20 hover:brightness-95 hover:-translate-y-0.5 transition"
+              >
+                {t("common.viewProducts")}
+              </Link>
+              <Link
+                href="/contact"
+                className="rounded-full border border-brand-primary/30 px-6 py-3 text-sm font-semibold text-brand-primary-dark hover:bg-brand-primary/5 hover:-translate-y-0.5 transition"
+              >
+                {t("common.requestQuote")}
+              </Link>
+            </div>
+
+            <div className="mt-10 flex flex-wrap gap-x-8 gap-y-4">
+              {heroBadges.map((b) => (
+                <div key={b.label} className="flex items-center gap-2.5">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-primary/10 text-brand-primary shrink-0">
+                    <b.Icon className="h-4 w-4" />
+                  </span>
+                  <span className="text-sm font-medium text-brand-primary-dark">
+                    {b.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative">
+            <div
+              aria-hidden
+              className="absolute -top-6 -right-6 w-40 h-40 rounded-full bg-brand-accent/25 blur-3xl"
+            />
+            <div
+              aria-hidden
+              className="absolute -bottom-8 -left-8 w-48 h-48 rounded-full bg-brand-primary/15 blur-3xl"
+            />
+            <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
+              <Image
+                src="/hero-eggs.jpg"
+                alt="Fresh Agroprime eggs"
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>
