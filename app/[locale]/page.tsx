@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import EggHeroCanvas from "@/components/EggHeroCanvas";
+import ScrollCrackEgg from "@/components/ScrollCrackEgg";
 import Reveal from "@/components/Reveal";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import {
@@ -52,23 +52,18 @@ export default function HomePage() {
 
   return (
     <div>
-      <section className="relative overflow-hidden bg-brand-primary-dark text-white min-h-[85vh] flex items-center">
-        <EggHeroCanvas className="absolute inset-0 z-0" />
-        <div
-          aria-hidden
-          className="absolute inset-0 z-[1] pointer-events-none bg-gradient-to-r from-brand-primary-dark via-brand-primary-dark/75 to-brand-primary-dark/10"
-        />
-        <div className="relative z-10 mx-auto max-w-6xl px-6 py-24 md:py-32 w-full">
+      <section className="relative overflow-hidden bg-brand-primary-dark text-white min-h-[70vh] flex items-center">
+        <div className="mx-auto max-w-6xl px-6 py-24 md:py-32 w-full text-center">
           <p className="text-brand-accent font-semibold tracking-wide uppercase text-sm mb-4">
             {t("common.tagline")}
           </p>
-          <h1 className="text-4xl md:text-5xl font-bold max-w-2xl leading-tight">
+          <h1 className="text-4xl md:text-5xl font-bold max-w-2xl mx-auto leading-tight">
             {t("home.heroTitle")}
           </h1>
-          <p className="mt-6 max-w-xl text-white/80 text-lg">
+          <p className="mt-6 max-w-xl mx-auto text-white/80 text-lg">
             {t("home.heroSubtitle")}
           </p>
-          <div className="mt-10 flex flex-wrap gap-4">
+          <div className="mt-10 flex flex-wrap gap-4 justify-center">
             <Link
               href="/products"
               className="rounded-full bg-brand-accent px-6 py-3 text-sm font-semibold text-brand-primary-dark shadow-lg shadow-brand-accent/20 hover:brightness-95 hover:-translate-y-0.5 transition"
@@ -84,6 +79,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <ScrollCrackEgg />
 
       <section className="border-b border-black/5">
         <div className="mx-auto max-w-6xl px-6 py-12 grid grid-cols-2 md:grid-cols-4 gap-8">

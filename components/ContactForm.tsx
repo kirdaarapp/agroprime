@@ -3,16 +3,42 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 
+type Status = "idle" | "submitting" | "success" | "error";
+
 export default function ContactForm() {
   const t = useTranslations();
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitted(true);
+    setStatus("submitting");
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    formData.append(
+      "access_key",
+      process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? ""
+    );
+    formData.append("subject", "New inquiry from Agroprime website");
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+      if (data.success) {
+        setStatus("success");
+        form.reset();
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   }
 
-  if (submitted) {
+  if (status === "success") {
     return (
       <div className="rounded-2xl bg-brand-cream p-8 text-center">
         <p className="text-brand-primary-dark font-semibold">
@@ -24,12 +50,15 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="grid gap-5">
+      <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
+
       <div>
         <label className="block text-sm font-medium text-foreground/80 mb-1">
           {t("contact.formName")}
         </label>
         <input
           required
+          name="name"
           type="text"
           className="w-full rounded-lg border border-black/10 px-4 py-2.5 outline-none focus:border-brand-primary"
         />
@@ -40,6 +69,7 @@ export default function ContactForm() {
         </label>
         <input
           required
+          name="email"
           type="email"
           className="w-full rounded-lg border border-black/10 px-4 py-2.5 outline-none focus:border-brand-primary"
         />
@@ -49,6 +79,7 @@ export default function ContactForm() {
           {t("contact.formCompany")}
         </label>
         <input
+          name="company"
           type="text"
           className="w-full rounded-lg border border-black/10 px-4 py-2.5 outline-none focus:border-brand-primary"
         />
@@ -59,15 +90,24 @@ export default function ContactForm() {
         </label>
         <textarea
           required
+          name="message"
           rows={4}
           className="w-full rounded-lg border border-black/10 px-4 py-2.5 outline-none focus:border-brand-primary"
         />
       </div>
+
+      {status === "error" && (
+        <p className="text-sm text-red-600">
+          Something went wrong sending your message. Please try WhatsApp or email us directly instead.
+        </p>
+      )}
+
       <button
         type="submit"
-        className="rounded-full bg-brand-primary px-6 py-3 text-sm font-semibold text-white hover:bg-brand-primary-dark transition w-fit"
+        disabled={status === "submitting"}
+        className="rounded-full bg-brand-primary px-6 py-3 text-sm font-semibold text-white hover:bg-brand-primary-dark transition w-fit disabled:opacity-60"
       >
-        {t("contact.formSubmit")}
+        {status === "submitting" ? "Sending..." : t("contact.formSubmit")}
       </button>
     </form>
   );
