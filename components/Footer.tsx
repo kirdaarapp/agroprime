@@ -44,8 +44,26 @@ export default function Footer() {
           </h3>
           <ul className="mt-4 space-y-2 text-sm text-foreground/70">
             <li>{t("common.addressValue")}</li>
-            <li dir="ltr">+974 4444 0000</li>
-            <li>info@agroprime.qa</li>
+            <li dir="ltr">
+              <a href="tel:+97470433866" className="hover:text-brand-primary">
+                +974 7043 3866
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://wa.me/97470433866"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-brand-primary"
+              >
+                {t("common.whatsapp")}: +974 7043 3866
+              </a>
+            </li>
+            <li>
+              <a href="mailto:info@agroprime.qa" className="hover:text-brand-primary">
+                info@agroprime.qa
+              </a>
+            </li>
           </ul>
         </div>
       </div>

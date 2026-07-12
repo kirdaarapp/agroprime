@@ -34,12 +34,31 @@ export default function ContactPage() {
             <div>
               <dt className="text-foreground/50">{t("common.phone")}</dt>
               <dd className="mt-1 text-foreground/80" dir="ltr">
-                +974 4444 0000
+                <a href="tel:+97470433866" className="hover:text-brand-primary">
+                  +974 7043 3866
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt className="text-foreground/50">{t("common.whatsapp")}</dt>
+              <dd className="mt-1 text-foreground/80" dir="ltr">
+                <a
+                  href="https://wa.me/97470433866"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-brand-primary"
+                >
+                  +974 7043 3866
+                </a>
               </dd>
             </div>
             <div>
               <dt className="text-foreground/50">{t("common.email")}</dt>
-              <dd className="mt-1 text-foreground/80">info@agroprime.qa</dd>
+              <dd className="mt-1 text-foreground/80">
+                <a href="mailto:info@agroprime.qa" className="hover:text-brand-primary">
+                  info@agroprime.qa
+                </a>
+              </dd>
             </div>
             <div>
               <dt className="text-foreground/50">{t("contact.officeHours")}</dt>
