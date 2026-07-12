@@ -174,7 +174,7 @@ export default function HomePage() {
             </div>
           </Reveal>
           <Reveal delay={100}>
-            <div className="mt-12 relative rounded-3xl overflow-hidden shadow-2xl max-w-xs mx-auto aspect-[9/16]">
+            <div className="mt-12 relative rounded-3xl overflow-hidden shadow-2xl max-w-3xl mx-auto aspect-video">
               <video
                 className="h-full w-full object-cover"
                 src="/videos/eggs-showcase.mp4"
