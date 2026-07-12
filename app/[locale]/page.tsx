@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import ScrollCrackEgg from "@/components/ScrollCrackEgg";
+import VideoGallery from "@/components/VideoGallery";
 import Reveal from "@/components/Reveal";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import {
@@ -123,8 +123,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <ScrollCrackEgg />
-
       <section className="border-b border-black/5">
         <div className="mx-auto max-w-6xl px-6 py-12 grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((s, i) => (
@@ -174,16 +172,8 @@ export default function HomePage() {
             </div>
           </Reveal>
           <Reveal delay={100}>
-            <div className="mt-12 relative rounded-3xl overflow-hidden shadow-2xl max-w-3xl mx-auto aspect-video">
-              <video
-                className="h-full w-full object-cover"
-                src="/videos/eggs-showcase.mp4"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-              />
+            <div className="mt-12">
+              <VideoGallery />
             </div>
           </Reveal>
         </div>
