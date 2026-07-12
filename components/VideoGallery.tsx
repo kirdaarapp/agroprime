@@ -63,13 +63,14 @@ function VideoTile({ src }: { src: string }) {
 
 export default function VideoGallery() {
   const videos = [
-    "/videos/showcase-6288294.mp4",
-    "/videos/showcase-6950162.mp4",
-    "/videos/showcase-6845568.mp4",
+    "/videos/showcase-carton1.mp4",
+    "/videos/showcase-cracking.mp4",
+    "/videos/showcase-frying.mp4",
+    "/videos/showcase-carton2.mp4",
   ];
 
   return (
-    <div className="grid gap-6 sm:grid-cols-3">
+    <div className="grid gap-6 sm:grid-cols-2">
       {videos.map((src) => (
         <VideoTile key={src} src={src} />
       ))}
